@@ -1,0 +1,18 @@
+[tool.poetry]
+authors = ["Charles Dunda <s33dunda@gmail.com>"]
+description = "Cloud Clutter Cleaner"
+name = "c3"
+readme = "README.md"
+version = "0.1.0"
+
+[tool.poetry.dependencies]
+boto3 = "^1.34.140"
+python = "^3.12"
+
+[tool.poetry.group.dev.dependencies]
+awscli-local = "^0.22.0"
+terraform-local = "^0.18.2"
+
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core"]
