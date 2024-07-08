@@ -1,0 +1,30 @@
+name: Test S3 Deployment Cleanup Script
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    defaults:
+      run:
+        working-directory: tests
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Start LocalStack
+      uses: LocalStack/setup-localstack@v0.2.1
+      with:
+        image-tag: 'latest'
+        install-awslocal: 'true'
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+
+    - name: Initialize Terraform
+      run: terraform init
+
+    - name: Apply Terraform
+      run: terraform apply -auto-approve

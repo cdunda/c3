@@ -28,6 +28,7 @@ resource "aws_s3_object" "deployments" {
   key      = each.key
   source   = ""
 
+  # Mimic different deployment timestamps based off their key's value e.g. 10 seconds
   provisioner "local-exec" {
     command = <<EOT
         sleep ${each.value[0]}
