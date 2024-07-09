@@ -56,6 +56,14 @@ jobs:
     - name: Apply Terraform
       run: terraform apply -auto-approve
 
-    - name: List objects before cleanup
+    - name: List deployments before cleanup
+      run: |
+        python get_timestamps.py test-bucket
+
+    - name: Run cleanup script
+      run: |
+        python ../main.py test-bucket 1 --localstack
+
+    - name: List deployments after cleanup
       run: |
         python get_timestamps.py test-bucket
