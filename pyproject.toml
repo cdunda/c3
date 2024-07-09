@@ -11,6 +11,7 @@ python = "^3.12"
 
 [tool.poetry.group.dev.dependencies]
 awscli-local = "^0.22.0"
+localstack = "^3.5.0"
 terraform-local = "^0.18.2"
 
 [build-system]
